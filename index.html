@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CodeTweakrs Shop</title>
+  <style>
+    :root {
+      --body-bg-color: #121212;
+      --text-color: #e0e0e0;
+      --link-color: #00ff99;
+      --link-hover-color: #66ffcc;
+      --main-bg-color: #1e1e1e;
+      --btn-bg-color: #00ff99;
+      --btn-text-color: #121212;
+      --glow-color: rgba(0,255,153,0.25);
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background-color: var(--body-bg-color);
+      color: var(--text-color);
+      animation: fadeIn 0.6s ease-in-out;
+      scroll-behavior: smooth;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--link-color);
+      font-weight: bold;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: var(--link-color);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--link-hover-color);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      background-color: var(--main-bg-color);
+      padding: 25px;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    main.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    main:hover {
+      transform: scale(1.01);
+      box-shadow: 0px 4px 15px var(--glow-color);
+    }
+
+    h2 {
+      color: var(--link-color);
+      margin-bottom: 15px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, #00ff99, #00cc66);
+      color: var(--btn-text-color);
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-position 0.4s ease, transform 0.2s ease;
+      background-size: 200%;
+      background-position: left;
+      box-shadow: 0 0 12px var(--glow-color);
+    }
+
+    .btn:hover {
+      background-position: right;
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0,255,153,0.45);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    #typing-text {
+      font-size: 2.5rem;
+      font-weight: bold;
+      white-space: nowrap;
+      border-right: 3px solid var(--link-color);
+      overflow: hidden;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="typing-text"></h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <h2>Welcome to CodeTweakrs Shop</h2>
+    <p>Discover powerful developer tools, apps, and utilities built by the CodeTweakrs team. 
+    Each product is designed to simplify your workflow and maximize productivity — from system dashboards to finance trackers.</p>
+    <p>Browse our collection and grab the tools that fit your setup.</p>
+    <a href="products.html" class="btn">Explore Products</a>
+  </main>
+
+  <footer>
+    &copy; 2025 CodeTweakrs. All rights reserved.
+  </footer>
+
+  <script>
+    const text = "CodeTweakrs Shop";
+    const typingElement = document.getElementById("typing-text");
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        typingElement.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 150);
+      } else {
+        typingElement.style.borderRight = "none";
+        document.getElementById("main-content").classList.add("show");
+      }
+    }
+
+    window.onload = type;
+  </script>
+</body>
+</html>
