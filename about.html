@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - CodeTweakrs Shop</title>
+  <style>
+    :root {
+      --body-bg-color: #121212;
+      --text-color: #e0e0e0;
+      --link-color: #00ff99;
+      --link-hover-color: #66ffcc;
+      --main-bg-color: #1e1e1e;
+      --btn-bg-color: #00ff99;
+      --btn-text-color: #121212;
+      --glow-color: rgba(0,255,153,0.25);
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background-color: var(--body-bg-color);
+      color: var(--text-color);
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: var(--link-color);
+      font-weight: bold;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0%;
+      height: 2px;
+      background-color: var(--link-color);
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--link-hover-color);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    main {
+      background-color: var(--main-bg-color);
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px var(--glow-color);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    main.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: var(--link-color);
+      margin-bottom: 15px;
+    }
+
+    p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .highlight {
+      color: var(--link-color);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>About CodeTweakrs Shop</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <h2>Who We Are</h2>
+    <p><span class="highlight">CodeTweakrs</span> is a developer-driven initiative built by people who actually write, debug, and ship code daily. We don’t make tools for hype — we make tools we actually use.</p>
+
+    <h2>Our Mission</h2>
+    <p>We focus on creating lightweight, practical utilities that simplify your workflow. Every product, from <span class="highlight">SysDash</span> to <span class="highlight">CashCubby</span>, is designed to make development and daily computing cleaner, faster, and more intuitive.</p>
+
+    <h2>Why It Exists</h2>
+    <p>Because developers deserve software that respects their time. No bloat, no nonsense — just efficient, well-built tools that get the job done. Everything here is crafted, tested, and refined by the same team that runs <span class="highlight">CodeTweakrs.net</span>, our open learning platform for programmers.</p>
+
+    <h2>Our Promise</h2>
+    <p>We build products with a long-term mindset. You get lifetime updates, transparent changelogs, and honest pricing. If it’s on this shop, it’s something we personally stand behind.</p>
+
+    <p>— The CodeTweakrs Team</p>
+  </main>
+
+  <footer>
+    &copy; 2025 CodeTweakrs. All rights reserved.
+  </footer>
+
+  <script>
+    window.onload = () => {
+      document.getElementById("main-content").classList.add("show");
+    };
+  </script>
+</body>
+</html>
