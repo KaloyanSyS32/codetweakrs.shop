@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CodeTweakrs Shop</title>
+  <title>Products - CodeTweakrs Shop</title>
   <style>
     :root {
       --body-bg-color: #121212;
@@ -18,13 +18,12 @@
 
     body {
       font-family: 'JetBrains Mono', monospace;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
       padding: 20px;
       background-color: var(--body-bg-color);
       color: var(--text-color);
       animation: fadeIn 0.6s ease-in-out;
-      scroll-behavior: smooth;
     }
 
     @keyframes fadeIn {
@@ -69,9 +68,10 @@
       background-color: var(--main-bg-color);
       padding: 25px;
       border-radius: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 20px var(--glow-color);
       opacity: 0;
       transform: translateY(20px);
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     main.show {
@@ -79,24 +79,57 @@
       transform: translateY(0);
     }
 
-    main:hover {
-      transform: scale(1.01);
-      box-shadow: 0px 4px 15px var(--glow-color);
-    }
-
     h2 {
       color: var(--link-color);
-      margin-bottom: 15px;
+      text-align: center;
+      margin-bottom: 25px;
     }
 
-    p {
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: #181818;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,255,153,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0,255,153,0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0,255,153,0.4);
+    }
+
+    .card h3 {
+      color: var(--link-color);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
       line-height: 1.6;
+      color: #ccc;
+      min-height: 70px;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      color: var(--link-color);
+      margin: 10px 0;
+      font-weight: bold;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
+      margin-top: 10px;
+      padding: 10px 18px;
       background: linear-gradient(90deg, #00ff99, #00cc66);
       color: var(--btn-text-color);
       border-radius: 4px;
@@ -121,20 +154,24 @@
       color: #777;
     }
 
-    #typing-text {
-      font-size: 2.5rem;
-      font-weight: bold;
-      white-space: nowrap;
-      border-right: 3px solid var(--link-color);
-      overflow: hidden;
-      display: inline-block;
+    .free {
+      opacity: 0.8;
+    }
+
+    .section-title {
+      text-align: left;
+      font-size: 1.3rem;
+      color: var(--link-hover-color);
+      margin-top: 30px;
       margin-bottom: 10px;
+      border-left: 3px solid var(--link-color);
+      padding-left: 10px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1 id="typing-text"></h1>
+    <h1>Our Products</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="products.html">Products</a>
@@ -143,11 +180,34 @@
   </header>
 
   <main id="main-content">
-    <h2>Welcome to CodeTweakrs Shop</h2>
-    <p>Discover powerful developer tools, apps, and utilities built by the CodeTweakrs team. 
-    Each product is designed to simplify your workflow and maximize productivity — from system dashboards to finance trackers.</p>
-    <p>Browse our collection and grab the tools that fit your setup.</p>
-    <a href="products.html" class="btn">Explore Products</a>
+    <h2>Explore Developer Tools by CodeTweakrs</h2>
+
+    <div class="section-title">Premium Product</div>
+    <div class="products">
+      <div class="card">
+        <h3>SysDash</h3>
+        <p>A modern system monitoring dashboard for Windows with license validation, real-time stats, and Firebase integration.</p>
+        <div class="price">$9.99</div>
+        <a href="#" class="btn">Buy License</a>
+      </div>
+    </div>
+
+    <div class="section-title">Free Tools</div>
+    <div class="products">
+      <div class="card free">
+        <h3>CashCubby</h3>
+        <p>A personal finance tracker that helps you visualize your savings, goals, and spending habits — free and open to use.</p>
+        <div class="price">Free</div>
+        <a href="https://codetweakrs.net/cashcubby" class="btn">Visit Page</a>
+      </div>
+
+      <div class="card free">
+        <h3>LiveDash</h3>
+        <p>A lightweight local dashboard for monitoring your CPU, RAM, and disk usage in real time — no install required.</p>
+        <div class="price">Free</div>
+        <a href="https://codetweakrs.net/livedash" class="btn">Visit Page</a>
+      </div>
+    </div>
   </main>
 
   <footer>
@@ -155,22 +215,9 @@
   </footer>
 
   <script>
-    const text = "CodeTweakrs Shop";
-    const typingElement = document.getElementById("typing-text");
-    let index = 0;
-
-    function type() {
-      if (index < text.length) {
-        typingElement.textContent += text.charAt(index);
-        index++;
-        setTimeout(type, 150);
-      } else {
-        typingElement.style.borderRight = "none";
-        document.getElementById("main-content").classList.add("show");
-      }
-    }
-
-    window.onload = type;
+    window.onload = () => {
+      document.getElementById("main-content").classList.add("show");
+    };
   </script>
 </body>
 </html>
